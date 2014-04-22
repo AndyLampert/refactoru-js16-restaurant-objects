@@ -15,13 +15,29 @@ var Plate = function(name, description, price, ingredients) {
 	this.price = price;
 	this.ingredients = ingredients;
 };
+Plate.prototype.toString = function() {
+	
+	var plateItem = new String();
+	return this.name;
+
+		// var foodItemInfo = new String();
+		// return this.name + " has " + this.calories + " calories." + "\n" + 
+		// this.name + " is vegan? " + this.checkIfVegan() + "\n" + 
+
+};
 
 var Order =  function(arrayOfPlates) {
 	this.arrayOfPlates = arrayOfPlates;
 };
 
+Order.prototype.toString = function() {
+};
+
 var Menu = function(arrayOfPlates) {
 	this.arrayOfPlates = arrayOfPlates;
+};
+Menu.prototype.toString = function() {
+
 };
 
 var Restaurant = function(name, description, Menu) {
@@ -29,9 +45,15 @@ var Restaurant = function(name, description, Menu) {
 	this.description = description;
 	this.Menu = Menu;
 };
+Restaurant.prototype.toString = function() {
+
+};
 
 var Customer = function(dietaryPreference) {
 	this.dietaryPreference = dietaryPreference;
+};
+Customer.prototype.toString = function() {
+
 };
 
 Fooditem.prototype.toString = function() {
