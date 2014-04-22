@@ -9,18 +9,38 @@ var Fooditem = function(name,calories,vegan,glutenFree,citrusFree){
 
 Fooditem.prototype.toString = function() {
 	var foodItemInfo = new String();
-	this.name + " has " + calories + " calories" + "\n";
+	return this.name + " has " + this.calories + " calories." + "\n" + 
+		this.name + " is vegan? " + this.checkIfVegan() + "\n" + 
+		this.name + " is gluten free? " + this.checkIfGlutenFree() + "\n" + 
+		this.name + " is citrus free? " + this.checkIfCitrusFree() + "\n"; 
 
-	"Is " + this.name + " vegan?" + checkIfVegan;
-	this.name + " is " + glutenFree + " glutenFree" + "\n";
-	this.name + " is " + citrusFree + " citrusFree" + "\n";
 
+	// console.log("Is " + this.name + " vegan?: " + checkIfVegan);
+	// this.name + " is " + glutenFree + " glutenFree" + "\n";
+	// this.name + " is " + citrusFree + " citrusFree" + "\n";
 
-	return foodItemInfo;
 };
 
 Fooditem.prototype.checkIfVegan = function(){
 	if(this.vegan){
+		return "Yes!";
+	}
+	else {
+		return "No!";
+	}
+};
+
+Fooditem.prototype.checkIfGlutenFree = function(){
+	if(this.glutenFree){
+		return "Yes!";
+	}
+	else {
+		return "No!";
+	}
+};
+
+Fooditem.prototype.checkIfCitrusFree = function(){
+	if(this.citrusFree){
 		return "Yes!";
 	}
 	else {
