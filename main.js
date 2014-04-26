@@ -57,14 +57,24 @@ var Plate = function(name, description, price, ingredients) {
 		// create an object, return object of values (4 things)
 		// calories, vegan, GF, CTs
 		return {
-			calories: 'calories',
-			vegan: 'vegan',
-			glutenFree: 'glutenFree',
-			citrusFree: 'citrusFree'
+			calories: calories,
+			vegan: vegan,
+			glutenFree: glutenFree,
+			citrusFree: citrusFree
 		}
 
 
 	};
+
+	// console.log(dietaryInfo());
+	//code below saves the return value object in dietCall
+		//steakBurrito.calories();  
+		//logs 761
+	var dietCall = dietaryInfo();
+	this.calories = dietCall.calories;
+	this.vegan = dietCall.vegan;
+	this.glutenFree = dietCall.glutenFree;
+	this.citrusFree = dietCall.citrusFree;
 };
 
 // to make it readable, turning obj to a string?
@@ -92,6 +102,9 @@ Plate.prototype.toString = function() {
 		// this.name + 
 
 };
+
+//setting up constructors for part 2
+// var Drink = new Fooditem
 
 // setting up the order for part 2
 var Order = function(arrayOfPlates) {
@@ -167,9 +180,13 @@ var garlic = new Fooditem('Garlic', 1, true, true, true);
 var avocado = new Fooditem('Avocado', 80, true, true, true);
 var apple = new Fooditem('Apple', 35, true, true, false);
 var cheese = new Fooditem('Cheese', 150, false, true, true);
-var beans = new Fooditem('Black beans', 80, true, true, true);
-var lime = new Fooditem('lime', 10, true, true, false);
-var tomato = new Fooditem('sliced tomato', 15, true, true, true);
+var beans = new Fooditem('Black Beans', 80, true, true, true);
+var lime = new Fooditem('Lime', 10, true, true, false);
+var tomato = new Fooditem('Sliced Tomato', 15, true, true, true);
+var onion = new Fooditem('Onion', 25, true, true, true);
+var salt = new Fooditem('Salt', 0, true, true, true);
+// var tequila
+
 
 // creating plates. these will make up our menu
 var veggieBurrito = new Plate('non-meaty burrito', 'burrito with no meat', 7.00, [tortilla, lettuce, garlic, avocado, cheese, lime]);
@@ -178,7 +195,7 @@ var burritoSteakBowl = new Plate('Burrito Bowl', 'Burrito without the gluten bs'
 var salad = new Plate('Simple Salad', 'just veggies', 6.00, [lettuce, radish, cheese]);
 var steakSalad = new Plate('Steaky Salad', 'Meaty salad', 12.00, [steak, lettuce, garlic, cheese, radish]);
 var fruitSalad = new Plate('Fruit Salad','a fruity salad', 8.00, [lettuce, radish, orange, apple]);
-
+var guacamole = new Plate('Guacamole', 'the best guac in the world', 8.00, [avocado, tomato, salt, onion, garlic, lime]);
 // constructor definition
 // var Fooditem = function(name,calories,vegan,glutenFree,citrusFree)
 // var Plate = function(name, description, price, ingredients)
