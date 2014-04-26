@@ -29,17 +29,16 @@ var Plate = function(name, description, price, ingredients) {
 	this.calories = 0;
 	this.glutenFree = true;
 
-	// item = whatever we're looping over. Arbitrary param name.
+	// ingredientParam = whatever we're looping over. Arbitrary param name.
 	ingredients.forEach(function(ingredientParam){
 		this.calories += ingredientParam.calories;
-		
 		// if input param is NOT glutenfree
 		// if one of ANY of the items is not gluten free, then the whole plate is NOT gluten free
-		if (!ingredientParam.glutenFree) {
-			this.glutenFree = false; // if the ingredientParam IS NOT glutenfree, make the Plate also not GlutenFree
-		}
 		if (!ingredientParam.vegan) {
 			this.vegan = false;
+		}
+		if (!ingredientParam.glutenFree) {
+			this.glutenFree = false; // if the ingredientParam IS NOT glutenfree, make the Plate also not GlutenFree
 		}
 		if (!ingredientParam.citrusFree){
 			this.citrusFree = false;
@@ -59,10 +58,17 @@ Fooditem.prototype.toString = function() {
 
 Plate.prototype.toString = function() {
 	var plateItem = new String();
-	return this.name;
-	// var foodItemInfo = new String();
-	// return this.name + " has " + this.calories + " calories." + "\n" + 
-	this.name + " is vegan? " + this.checkIfVegan() + "\n";
+	return 
+		// report name
+		
+		// report description
+
+		// report calories
+		this.name + " has " + this.calories + " calories." + "\n" + 
+		// report vegan status
+		this.name + " is vegan? " + this.checkIfVegan() + "\n";
+		// report 
+		// this.name + 
 
 };
 
@@ -144,15 +150,16 @@ var lime = new Fooditem('lime', 10, true, true, false);
 var tomato = new Fooditem('sliced tomato', 15, true, true, true);
 
 // creating plates. these will make up our menu
-var veggieBurrito = new Plate('non-meaty burrito', 'burrito with no meat', [tortilla, lettuce, garlic, avocado, cheese, lime]);
+var veggieBurrito = new Plate('non-meaty burrito', 'burrito with no meat', 7.00, [tortilla, lettuce, garlic, avocado, cheese, lime]);
 var steakBurrito = new Plate('Burrito', 'Who doesn\'t love burritos?', 10.00, [steak, tortilla, lettuce, garlic, avocado, cheese, lime]);
 var burritoBowl = new Plate('Burrito Bowl', 'Burrito without the gluten bs', 8.00, [steak, lettuce, garlic, avocado, cheese]);
 var salad = new Plate('Simple Salad', 'just veggies', 6.00, [lettuce, radish, cheese]);
 var steakSalad = new Plate('Steaky Salad', 'Meaty salad', 12.00, [steak, lettuce, garlic, cheese, radish]);
-var fruitSalad = new Plate('Fruit Salad' [lettuce, radish, orange, apple]);
+var fruitSalad = new Plate('Fruit Salad','a fruity salad', 8.00, [lettuce, radish, orange, apple]);
 
-
-
+// constructor definition
+// var Fooditem = function(name,calories,vegan,glutenFree,citrusFree)
+// var Plate = function(name, description, price, ingredients)
 
 
 
