@@ -29,21 +29,42 @@ var Plate = function(name, description, price, ingredients) {
 	this.calories = 0;
 	this.glutenFree = true;
 
+	var dietaryInfo = function(){
+	// need to create variables that will be returned
+	// calories, vegan, GF, CF
+	var calories = 0;
+	var vegan = true;
+	var glutenFree = true;
+	var citrusFree = true;
+
 	// ingredientParam = whatever we're looping over. Arbitrary param name.
-	ingredients.forEach(function(ingredientParam){
-		this.calories += ingredientParam.calories;
-		// if input param is NOT glutenfree
-		// if one of ANY of the items is not gluten free, then the whole plate is NOT gluten free
-		if (!ingredientParam.vegan) {
-			this.vegan = false;
+		ingredients.forEach(function(ingredientParam){
+			calories += ingredientParam.calories;
+			console.log(ingredientParam.calories);
+			// if input param is NOT glutenfree
+			// if one of ANY of the items is not gluten free, then the whole plate is NOT gluten free
+			if (!ingredientParam.vegan) {
+				vegan = false;
+			}
+			if (!ingredientParam.glutenFree) {
+				glutenFree = false; // if the ingredientParam IS NOT glutenfree, make the Plate also not GlutenFree
+			}
+			if (!ingredientParam.citrusFree){
+				citrusFree = false;
+			}
+		});
+		// we're going to want to return values here
+		// create an object, return object of values (4 things)
+		// calories, vegan, GF, CTs
+		return {
+			calories: 'calories',
+			vegan: 'vegan',
+			glutenFree: 'glutenFree',
+			citrusFree: 'citrusFree'
 		}
-		if (!ingredientParam.glutenFree) {
-			this.glutenFree = false; // if the ingredientParam IS NOT glutenfree, make the Plate also not GlutenFree
-		}
-		if (!ingredientParam.citrusFree){
-			this.citrusFree = false;
-		}
-	});
+
+
+	};
 };
 
 // to make it readable, turning obj to a string?
@@ -62,7 +83,7 @@ Plate.prototype.toString = function() {
 		// report name
 		
 		// report description
-
+		
 		// report calories
 		this.name + " has " + this.calories + " calories." + "\n" + 
 		// report vegan status
@@ -72,17 +93,16 @@ Plate.prototype.toString = function() {
 
 };
 
+// setting up the order for part 2
 var Order = function(arrayOfPlates) {
 	this.arrayOfPlates = arrayOfPlates;
 };
 
 Order.prototype.toString = function() {
+
 };
 
-// current objective
-// Define a toString method on the constructor's prototype. 
-// It should return a string description of the food including its name, calories, and dietary information, formatted as you choose. toString should not have any side effects.
-
+// setting up menu for part 2
 var Menu = function(arrayOfPlates) {
 	this.arrayOfPlates = arrayOfPlates;
 };
@@ -90,11 +110,13 @@ Menu.prototype.toString = function() {
 
 };
 
+// setting up restaurant for part 2
 var Restaurant = function(name, description, Menu) {
 	this.name = name;
 	this.description = description;
 	this.Menu = Menu;
 };
+
 Restaurant.prototype.toString = function() {
 
 };
@@ -152,7 +174,7 @@ var tomato = new Fooditem('sliced tomato', 15, true, true, true);
 // creating plates. these will make up our menu
 var veggieBurrito = new Plate('non-meaty burrito', 'burrito with no meat', 7.00, [tortilla, lettuce, garlic, avocado, cheese, lime]);
 var steakBurrito = new Plate('Burrito', 'Who doesn\'t love burritos?', 10.00, [steak, tortilla, lettuce, garlic, avocado, cheese, lime]);
-var burritoBowl = new Plate('Burrito Bowl', 'Burrito without the gluten bs', 8.00, [steak, lettuce, garlic, avocado, cheese]);
+var burritoSteakBowl = new Plate('Burrito Bowl', 'Burrito without the gluten bs', 8.00, [steak, lettuce, garlic, avocado, cheese]);
 var salad = new Plate('Simple Salad', 'just veggies', 6.00, [lettuce, radish, cheese]);
 var steakSalad = new Plate('Steaky Salad', 'Meaty salad', 12.00, [steak, lettuce, garlic, cheese, radish]);
 var fruitSalad = new Plate('Fruit Salad','a fruity salad', 8.00, [lettuce, radish, orange, apple]);
